@@ -8,8 +8,9 @@ export async function generateMetadata(id) {
   const newsId = id.params.id;
   const Neews = await getNews();
   const News = await Neews;
-  console.log(News.სიახლეები[newsId])
-  return { 
+  //console.log(News.სიახლეები[newsId])
+
+  return {
     title: News.სიახლეები[newsId].geo.title,
     type: 'website',
     description: 'this is description',
@@ -17,36 +18,40 @@ export async function generateMetadata(id) {
       images: [`https://khulo.gov.ge/${News.სიახლეები[newsId].geo.img}`],
       title: News.სიახლეები[newsId].geo.title
     },
-    
+
   };
 }
 export default async function page(id) {
-  
+
   const newsId = id.params.id;
   const language = 1;
   const Neews = getNews()
   const News = await Neews;
   const currentLocation = `http://test.georgianart.ge/NEWS/${newsId}`
   //console.log(News)
-  
+
   const exactNews = News.სიახლეები[newsId]
   //console.log(News.სიახლეები[newsId])
 
   const newsList = Object.entries(News.სიახლეები).length ? Object.entries(News.სიახლეები).reverse().filter(news => newsId !== news[0]).map((news, i) => {
-    if (i <= 1  ) {
+    if (i <= 1) {
       // console.log('this are news' , news)
 
-      return <Link href={`/NEWS/${news[0]}`} key={news.id}><div className="landing-items-container-infos" id={news.id} key={news.id}>
-        <div className='new-image-wrapper'>
-          <img src={'https://khulo.gov.ge/' + (news[1].geo.thumb_img ? news[1].geo.thumb_img : news[1].geo.img)} alt="" />
-        </div>
-        <div>
-          <span className='time'>{language == 1 ? news[1].geo.date : ""}{language == 2 ? news[1].eng.date : ""}</span>
-          <span className='header'>{language == 1 ? news[1].geo.title : ""}{language == 2 ? news[1].eng.title : ""}</span>
-          <span className='vrclad'><Link href={`/NEWS/${news[0]}`}>{language == 1 ? " ვრცლად" : ""}
-            {language == 2 ? " See more" : ""}</Link></span>
-        </div>
-      </div></Link>
+      return <Link href={`/NEWS/${news[0]}`} key={news.id}>
+        <div className="landing-items-container-infos" id={news.id} key={news.id}>
+          <div className='new-image-wrapper'>
+            <img src={'https://khulo.gov.ge/' + (news[1].geo.thumb_img ? news[1].geo.thumb_img : news[1].geo.img)} alt="" />
+          </div>
+          <div>
+            <span className='time'>{language == 1 ? news[1].geo.date : ""}{language == 2 ? news[1].eng.date : ""}</span>
+            <span className='header'>{language == 1 ? news[1].geo.title : ""}{language == 2 ? news[1].eng.title : ""}</span>
+            <span className='vrclad'>
+              {language == 1 ? " ვრცლად" : ""}
+              {language == 2 ? " See more" : ""}
+
+            </span>
+          </div>
+        </div></Link>
 
     }
   }) : "loading news"
@@ -77,7 +82,7 @@ export default async function page(id) {
               <a href={`https://twitter.com/intent/tweet?url=${currentLocation}&text=${exactNews.geo.title}`} rel="noreferrer" target='_blank'>
                 <FaTwitter />
               </a>
-           
+
             </span>
           </div>
         </div>

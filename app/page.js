@@ -22,7 +22,7 @@ export default async function Home() {
 
 
       return <div className="landing-items-container-infos" id={i} key={i}>
-        <Link href={`/news/${news[1].geo.rec_id}`}>
+        <Link href={`/NEWS/${news[1].geo.rec_id}`}>
           <div className='new-image-wrapper'>
             <img src={'https://khulo.gov.ge/' + news[1].geo.img} alt="" />
           </div>

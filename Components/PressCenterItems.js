@@ -9,7 +9,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 function PressCenterItems(props) {
   const menuId = props.id
-  console.log(menuId)
+  // console.log(menuId)
   const [news, setNews] = useState({})
 
   const language = 1;
@@ -22,7 +22,7 @@ function PressCenterItems(props) {
 
         switch (menuId) {
           case '1':
-            
+
             setNews(data.სიახლეები)
             break;
           case '2':
@@ -66,12 +66,7 @@ function PressCenterItems(props) {
 
         //  console.log('object entries', Object.entries(menu))
 
-        Object.entries(menu).map(item => {
-
-          if (item[1].level == 1) {
-            //console.log('entries item', item[1].name_eng , item[1].level)
-          }
-        })
+       
 
       });
 
@@ -88,10 +83,10 @@ function PressCenterItems(props) {
           const windoww = window.location.pathname;
           const result = windoww.split('/').pop();
           const slugg = qveItem[1].slug
-         
-          if(result === slugg) {
-            
-            
+
+          if (result === slugg) {
+
+
             (!Object.entries(siteName).length) && setSiteName(qveItem[1])
           }
           return <span key={index} className={result === slugg ? "active" : ""}>
@@ -119,12 +114,12 @@ function PressCenterItems(props) {
 
 
   const newsList = news ? Object.entries(news).length ? Object.entries(news).reverse().filter(news => news[1].geo.title.includes(search)).slice(pagesVisited, pagesVisited + usersPerPage).map((News, i) => {
-   // console.log(news)
+    // console.log(news)
     return <div className="landing-items-container-infos" id={News.id} key={News.id}>
       <Link href={`${window.location.pathname}/${News[1].geo.rec_id}`}>
         <div className='new-image-wrapper'>
-          
-          <Image src={'https://khulo.gov.ge/' +  News[1].geo.img} alt="" unoptimized width={10} height={10} />
+
+          <Image src={'https://khulo.gov.ge/' + News[1].geo.img} alt="" unoptimized width={10} height={10} />
         </div>
         <div>
           <span className='time'>{language == 1 ? News[1].geo.date : ""} {language == 2 ? News[1].eng.date : ""}</span>
@@ -143,7 +138,7 @@ function PressCenterItems(props) {
           {language == 2 ? " PRESS CENTER" : ""}</span>
 
         <span>{language == 1 ? siteName.name_geo : siteName.name_eng}
-          </span>
+        </span>
 
       </header>
       <div>
@@ -171,7 +166,7 @@ function PressCenterItems(props) {
           nextLinkClassName={"nextButton"}
           disabledClassName={"disabledButton"}
           activeClassName={"activeButton"}
-          onClick={window.scrollTo({ top: 0, behavior: 'smooth' })}
+         // onClick={window.scrollTo({ top: 0, behavior: 'smooth' })}
         />
       </div>
     </div>

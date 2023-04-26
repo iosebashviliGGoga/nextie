@@ -1,6 +1,4 @@
 
-
-
 import { motion } from 'framer-motion'
 import { Inter } from 'next/font/google'
 import getNews from '@/lib/getNews'
@@ -58,7 +56,7 @@ export default async function Home() {
    >
       <MainSlider />
       <div className="landing-items margin-280px">
-        <div className="landing-items-info"><Link href='/news'>
+        <div className="landing-items-info"><Link href='/NEWS'>
           <span>
 
 
@@ -109,7 +107,7 @@ export default async function Home() {
             {language == 3 ? " Новости" : ""}</span>
           <div className="seeAll">
             <img src={seeMore} alt="" />
-            <span><Link href='/News'> {language == 1 ? " ყველას ნახვა" : ""}
+            <span><Link href='/NEWS'> {language == 1 ? " ყველას ნახვა" : ""}
               {language == 2 ? " See all" : ""}
               {language == 3 ? " увидеть все" : ""}</Link></span>
           </div>
@@ -118,7 +116,7 @@ export default async function Home() {
           {newsList}
         </div>
         <div className="about">
-          <span><Link href='/news'>{language == 1 ? " სიახლეების გვერდი" : ""}
+          <span><Link href='/NEWS'>{language == 1 ? " სიახლეების გვერდი" : ""}
             {language == 2 ? " News page" : ""}
             {language == 3 ? " страница новостей" : ""}</Link></span>
         </div>

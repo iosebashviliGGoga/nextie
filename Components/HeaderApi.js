@@ -20,6 +20,7 @@ function HeaderApi() {
    const router = useRouter();
    
    const [path, setPath] = useState(usePathname())
+   //console.log('path ', path)
   
   const [wraper, setWraper] = useState(false)
   const handlewraper = (e) => {
@@ -33,7 +34,7 @@ function HeaderApi() {
   };
 
 
-
+  
   /*
     const { search } = useContext(SearchContext)
     const { setSearch } = useContext(SearchContext)
@@ -84,7 +85,7 @@ function HeaderApi() {
    
   })
   useEffect(()=>{
-    console.log('it changed')
+    
     setPath(window.location.pathname)
 
 

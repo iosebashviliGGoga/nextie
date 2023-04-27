@@ -5,6 +5,7 @@ import { FaFacebookF, FaTwitter } from 'react-icons/fa'
 
 
 export async function generateMetadata(id) {
+    console.log(id.params)
   const newsId = id.params.id;
   const Neews = await getNews();
   const News = await Neews;
@@ -98,4 +99,3 @@ export default async function page(id) {
     </div>
   )
 }
-

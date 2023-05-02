@@ -17,7 +17,9 @@ export async function generateMetadata(id) {
     type: 'website',
     openGraph: {
       images: [`https://khulo.gov.ge/${News.სიახლეები[newsId].geo.img}`],
-      title: News.სიახლეები[newsId].geo.title
+      title: News.სიახლეები[newsId].geo.title,
+      url:  `http://test.georgianart.ge/presscenter/NEWS/${News.სიახლეები[newsId].geo.rec_id}`
+      
     },
 
   };
@@ -38,7 +40,7 @@ export default async function page(id) {
     if (i <= 1) {
       // console.log('this are news' , news)
 
-      return <Link href={`/NEWS/${news[0]}`} key={news.id}>
+      return <Link href={`/presscenter/NEWS/${news[0]}`} key={news.id}>
         <div className="landing-items-container-infos" id={news.id} key={news.id}>
           <div className='new-image-wrapper'>
             <img src={'https://khulo.gov.ge/' + (news[1].geo.thumb_img ? news[1].geo.thumb_img : news[1].geo.img)} alt="" />

@@ -11,12 +11,13 @@ export async function generateMetadata(id) {
   //console.log(News.სიახლეები[newsId])
 
   return {
-    title: News.განცხადებები[newsId].geo.title,
+    title: News.პრესრელიზები[newsId].geo.title,
     type: 'website',
     description: 'this is description',
     openGraph: {
-      images: [`https://khulo.gov.ge/${News.განცხადებები[newsId].geo.img}`],
-      title: News.განცხადებები[newsId].geo.title
+      images: [`https://khulo.gov.ge/${News.პრესრელიზები[newsId].geo.img}`],
+      title: News.პრესრელიზები[newsId].geo.title,
+      url: `http://test.georgianart.ge/presscenter/presrelizebi/${newsId}`
     },
 
   };
@@ -27,17 +28,17 @@ export default async function page(id) {
   const language = 1;
   const Neews = getNews()
   const News = await Neews;
-  const currentLocation = `http://test.georgianart.ge/ganckhadebebi/${newsId}`
+  const currentLocation = `http://test.georgianart.ge/presscenter/presrelizebi/${newsId}`
   //console.log(News)
 
-  const exactNews = News.განცხადებები[newsId]
+  const exactNews = News.პრესრელიზები[newsId]
   //console.log(News.სიახლეები[newsId])
 
-  const newsList = Object.entries(News.განცხადებები).length ? Object.entries(News.განცხადებები).reverse().filter(news => newsId !== news[0]).map((news, i) => {
+  const newsList = Object.entries(News.პრესრელიზები).length ? Object.entries(News.პრესრელიზები).reverse().filter(news => newsId !== news[0]).map((news, i) => {
     if (i <= 1) {
       // console.log('this are news' , news)
 
-      return <Link href={`/anonsebi/${news[0]}`} key={news.id}>
+      return <Link href={`/prescentri/presrelizebi/${news[0]}`} key={news.id}>
         <div className="landing-items-container-infos" id={news.id} key={news.id}>
           <div className='new-image-wrapper'>
             <img src={'https://khulo.gov.ge/' + (news[1].geo.thumb_img ? news[1].geo.thumb_img : news[1].geo.img)} alt="" />
@@ -61,7 +62,7 @@ export default async function page(id) {
       <header>
         <span className='big'> {language == 1 ? " პრესცენტრი" : ""}
           {language == 2 ? " PRESS CENTER" : ""}</span>
-        <span>{language == 1 ? " განცხადებები" : ""}
+        <span>{language == 1 ? " პრესრელიზები" : ""}
           {language == 2 ? " ANNOUNCMENTS" : ""}</span>
       </header>
       <div className="main">
@@ -87,7 +88,7 @@ export default async function page(id) {
           </div>
         </div>
         <div className="moreNews">
-          <span> {language == 1 ? "   სხვა განცხადებები:" : ""}
+          <span> {language == 1 ? "   სხვა პრესრელიზები:" : ""}
             {language == 2 ? "OTHER ANNOUNCMENTS:" : ""}</span>
           {newsList}
         </div>

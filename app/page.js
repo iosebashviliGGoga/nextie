@@ -5,6 +5,7 @@ import getNews from '@/lib/getNews'
 import Link from 'next/link'
 import MainSlider from '@/Components/MainSlider'
 import seeMore from '../public/images/Group 51.png'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -54,6 +55,7 @@ export default async function Home() {
   return (
     <div className='landing' 
    >
+    
       <MainSlider />
       <div className="landing-items margin-280px">
         <div className="landing-items-info"><Link href='/NEWS'>

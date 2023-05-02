@@ -8,7 +8,7 @@ import Image from 'next/image'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 function PressCenterItems(props) {
- 
+
   const menuId = props.id
   // console.log(menuId)
   const [news, setNews] = useState({})
@@ -17,12 +17,12 @@ function PressCenterItems(props) {
   const language = 1;
   const search = '';
   useEffect(() => {
-   
+
     const link = `https://khulo.gov.ge/api/news.php?lang=geo`;
     fetch(link)
       .then((response) => response.json())
       .then((data) => {
-       // console.log(data)
+        // console.log(data)
 
         switch (menuId) {
           case '1':
@@ -58,7 +58,7 @@ function PressCenterItems(props) {
       fetch(link)
         .then((response) => response.json())
         .then((data) => {
-         // console.log(data)
+          // console.log(data)
 
           setNews(data)
 
@@ -252,7 +252,7 @@ function PressCenterItems(props) {
           nextLinkClassName={"nextButton"}
           disabledClassName={"disabledButton"}
           activeClassName={"activeButton"}
-         onClick={isClient && window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={isClient && window.scrollTo({ top: 0, behavior: 'smooth' })}
         />
       </div>
     </div>

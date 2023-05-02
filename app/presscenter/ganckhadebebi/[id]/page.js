@@ -13,10 +13,10 @@ export async function generateMetadata(id) {
   return {
     title: News.განცხადებები[newsId].geo.title,
     type: 'website',
-    description: 'this is description',
     openGraph: {
       images: [`https://khulo.gov.ge/${News.განცხადებები[newsId].geo.img}`],
-      title: News.განცხადებები[newsId].geo.title
+      title: News.განცხადებები[newsId].geo.title,
+      url:  `http://test.georgianart.ge/presscenter/NEWS/${News.სიახლეები[newsId].geo.rec_id}`
     },
 
   };
@@ -27,7 +27,7 @@ export default async function page(id) {
   const language = 1;
   const Neews = getNews()
   const News = await Neews;
-  const currentLocation = `http://test.georgianart.ge/ganckhadebebi/${newsId}`
+  const currentLocation = `http://test.georgianart.ge/presscenter/ganckhadebebi/${newsId}`
   //console.log(News)
 
   const exactNews = News.განცხადებები[newsId]
@@ -37,7 +37,7 @@ export default async function page(id) {
     if (i <= 1) {
       // console.log('this are news' , news)
 
-      return <Link href={`/anonsebi/${news[0]}`} key={news.id}>
+      return <Link href={`/presscenter/ganckhadebebi/${news[0]}`} key={news.id}>
         <div className="landing-items-container-infos" id={news.id} key={news.id}>
           <div className='new-image-wrapper'>
             <img src={'https://khulo.gov.ge/' + (news[1].geo.thumb_img ? news[1].geo.thumb_img : news[1].geo.img)} alt="" />
@@ -54,7 +54,7 @@ export default async function page(id) {
         </div></Link>
 
     }
-  }) : "loading news"
+  }) : "loading "
 
   return (
     <div className="news1-container margin-280px">
@@ -97,4 +97,4 @@ export default async function page(id) {
 
     </div>
   )
-}
+}``
